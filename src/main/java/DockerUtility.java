@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class DockerUtility {
 
@@ -168,7 +169,8 @@ public class DockerUtility {
                     .withFollowStream(true)
                     .withStdOut(true)
                     .withStdErr(true)
-                    .start();
+                    .start()
+                    .awaitCompletion(5, TimeUnit.SECONDS);
         }
         catch(RuntimeException e) {
             removeContainerIfExists(containerName);

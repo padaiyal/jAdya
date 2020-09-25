@@ -18,15 +18,18 @@ public class DockerUtilityTest {
                 DockerImage.MICROSOFT_SQL_SERVER_2019_CU6_UBUNTU_16_04,
                 DockerImage.MICROSOFT_SQL_SERVER_2019_LATEST,
                 DockerImage.MICROSOFT_SQL_SERVER_2017_CU21_UBUNTU_16_04,
-                DockerImage.MICROSOFT_SQL_SERVER_2017_LATEST
+                DockerImage.MICROSOFT_SQL_SERVER_2017_LATEST,
+                DockerImage.MYSQL_LATEST
         );
         containersToCreate = Arrays.asList(
                 DockerImage.MICROSOFT_SQL_SERVER_2017_LATEST,
-                DockerImage.MICROSOFT_SQL_SERVER_2019_LATEST
+                DockerImage.MICROSOFT_SQL_SERVER_2019_LATEST,
+                DockerImage.MYSQL_LATEST
         );
         // containersToRun should be a subset of containersToCreate, as only if the container is created can it be run.
-        containersToRun = Collections.singletonList(
-                DockerImage.MICROSOFT_SQL_SERVER_2019_LATEST
+        containersToRun = Arrays.asList(
+                DockerImage.MICROSOFT_SQL_SERVER_2019_LATEST,
+                DockerImage.MYSQL_LATEST
         );
 
         dockerUtility = new DockerUtility();
