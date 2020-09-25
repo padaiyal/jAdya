@@ -1,12 +1,13 @@
 # Adya
 
-`Adya` means `first power and unparalleled`, emphasizing the deployment of dependent frameworks and core technology to any application.
+`Adya` means `first power and unparalleled`, emphasizing the importance of deploying dependent frameworks and core technology to any application.
 This library lets you deploy and manage docker images/containers via Java.
 
 ### Supported Docker Images
 - Databases
   - MS-SQL 2017
   - MS-SQL 2019
+  - MySQL
 
 # Usage
 Here's an example code to deploy/terminate a MS-SQL docker container via Adya:

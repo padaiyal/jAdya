@@ -27,6 +27,12 @@ public enum DockerImage {
             "2019-latest",
             "1433:1433",
             "ACCEPT_EULA=Y;SA_PASSWORD=initialPassword12345!"
+    ),
+    MYSQL_LATEST(
+            "mysql",
+            "latest",
+            "3306:3306",
+            "MYSQL_ROOT_PASSWORD=initialPassword12345!"
     );
 
     private final String repository;
