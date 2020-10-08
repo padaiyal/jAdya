@@ -1,4 +1,5 @@
 import com.github.dockerjava.api.DockerClient;
+import com.github.dockerjava.api.model.Container;
 import com.github.dockerjava.api.model.ExposedPort;
 import com.github.dockerjava.api.model.HostConfig;
 import com.github.dockerjava.api.model.Image;
@@ -7,6 +8,7 @@ import com.github.dockerjava.core.DockerClientBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.awt.*;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -79,6 +81,7 @@ public class DockerUtility {
             dockerClient.removeContainerCmd(containerName)
                     .withForce(true)
                     .exec();
+            logger.info("Removed pre-existing container '" + containerName + "'");
         }
     }
 
@@ -92,7 +95,7 @@ public class DockerUtility {
         Objects.requireNonNull(dockerImage);
 
         // Pull the docker image from a pre-configured source
-        logger.info("Pulling docker image '" + dockerImage + "'");
+        logger.info("Pulling docker image '" + dockerImage.name() + "'");
         dockerClient.pullImageCmd("")
                 .withRepository(dockerImage.getRepository())
                 .withTag(dockerImage.getImageTag())
@@ -112,7 +115,6 @@ public class DockerUtility {
         Objects.requireNonNull(containerName);
 
         if(removeContainerIfExists) {
-            logger.info("Removed pre-existing container '" + containerName + "'");
             removeContainerIfExists(containerName);
         }
 

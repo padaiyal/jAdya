@@ -56,17 +56,24 @@ public class SQLServerDockerImageTest {
     )
     public void testMSSQLDockerImage(DockerImage dockerImage) throws InterruptedException {
         DockerUtility dockerUtility = new DockerUtility();
+        String containerName = "mssql_container";
 
-        // Create and run container
-        dockerUtility.createAndRunContainer(dockerImage, dockerImage.toString(), true);
+        try {
 
-        // Wait 20s for the SQL server to start up
-        Thread.sleep(20_000);
+            logger.info("Starting container: " + containerName);
 
-        // Test if the connection to the database is successful
-        Assertions.assertDoesNotThrow(() -> connectToMSSQLDatabase(dockerImage));
+            // Create and run container
+            dockerUtility.createAndRunContainer(dockerImage, containerName, true);
 
-        // Stop and remove container
-        dockerUtility.removeContainerIfExists(dockerImage.toString());
+            // Wait 20s for the SQL server to start up
+            Thread.sleep(20_000);
+
+            // Test if the connection to the database is successful
+            Assertions.assertDoesNotThrow(() -> connectToMSSQLDatabase(dockerImage));
+        }
+        finally {
+            // Stop and remove container
+            dockerUtility.removeContainerIfExists(containerName);
+        }
     }
 }
