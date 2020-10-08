@@ -43,17 +43,21 @@ public class MySQLDockerImageTest {
     )
     public void testMySQLDockerImage(DockerImage dockerImage) throws InterruptedException {
         DockerUtility dockerUtility = new DockerUtility();
+        String containerName = "mysql_container";
 
-        // Create and run container
-        dockerUtility.createAndRunContainer(dockerImage, dockerImage.toString(), true);
+        try {
+            // Create and run container
+            dockerUtility.createAndRunContainer(dockerImage, containerName, true);
 
-        // Wait 20s for the SQL server to start up
-        Thread.sleep(20_000);
+            // Wait 20s for the SQL server to start up
+            Thread.sleep(20_000);
 
-        // Test if the connection to the database is successful
-        Assertions.assertDoesNotThrow(() -> connectToMySQLDatabase(dockerImage));
-
-        // Stop and remove container
-        dockerUtility.removeContainerIfExists(dockerImage.toString());
+            // Test if the connection to the database is successful
+            Assertions.assertDoesNotThrow(() -> connectToMySQLDatabase(dockerImage));
+        }
+        finally {
+            // Stop and remove container
+            dockerUtility.removeContainerIfExists(containerName);
+        }
     }
 }

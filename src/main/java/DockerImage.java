@@ -33,6 +33,12 @@ public enum DockerImage {
             "latest",
             "3306:3306",
             "MYSQL_ROOT_PASSWORD=initialPassword12345!"
+    ),
+    MONGODB_LATEST(
+            "mongo",
+            "latest",
+            "27017:27017",
+            "MONGO_INITDB_ROOT_USERNAME=root;MONGO_INITDB_ROOT_PASSWORD=example"
     );
 
     private final String repository;
