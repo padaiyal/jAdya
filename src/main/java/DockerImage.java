@@ -39,6 +39,12 @@ public enum DockerImage {
             "latest",
             "27017:27017",
             "MONGO_INITDB_ROOT_USERNAME=root;MONGO_INITDB_ROOT_PASSWORD=example"
+    ),
+    SPLUNK_LATEST(
+            "splunk/splunk",
+            "latest",
+            "8000:8000 8089:8089",
+            "SPLUNK_START_ARGS=--accept-license;SPLUNK_PASSWORD=initialPassword12345!"
     );
 
     private final String repository;

@@ -1,5 +1,4 @@
 import com.github.dockerjava.api.DockerClient;
-import com.github.dockerjava.api.model.Container;
 import com.github.dockerjava.api.model.ExposedPort;
 import com.github.dockerjava.api.model.HostConfig;
 import com.github.dockerjava.api.model.Image;
@@ -8,7 +7,6 @@ import com.github.dockerjava.core.DockerClientBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.awt.*;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
