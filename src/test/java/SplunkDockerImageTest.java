@@ -47,8 +47,8 @@ public class SplunkDockerImageTest {
             // Create and run container
             dockerUtility.createAndRunContainer(dockerImage, containerName, true);
 
-            // Wait 20s for the Splunk server to start up
-            Thread.sleep(20_000);
+            // Wait 30s for the Splunk server to start up
+            Thread.sleep(30_000);
 
             // Test if the connection to the database is successful
             Assertions.assertDoesNotThrow(() -> connectToSplunk(dockerImage));

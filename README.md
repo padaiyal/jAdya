@@ -8,6 +8,9 @@ This library lets you deploy and manage docker images/containers via Java.
   - MS-SQL 2017
   - MS-SQL 2019
   - MySQL
+  - MongoDB
+  - Splunk
+  - PostgreSQL
 
 # Usage
 Here's an example code to deploy/terminate a MS-SQL docker container via Adya:
