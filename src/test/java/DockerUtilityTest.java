@@ -29,7 +29,8 @@ public class DockerUtilityTest {
                 DockerImage.MYSQL_LATEST,
                 DockerImage.MONGODB_LATEST,
                 DockerImage.SPLUNK_LATEST,
-                DockerImage.POSTGRESQL_LATEST
+                DockerImage.POSTGRESQL_LATEST,
+                DockerImage.ELASTICSEARCH_7_9_2
         );
 
         createdContainers = new HashMap<>();
@@ -39,7 +40,8 @@ public class DockerUtilityTest {
                 DockerImage.MYSQL_LATEST,
                 DockerImage.MONGODB_LATEST,
                 DockerImage.SPLUNK_LATEST,
-                DockerImage.POSTGRESQL_LATEST
+                DockerImage.POSTGRESQL_LATEST,
+                DockerImage.ELASTICSEARCH_7_9_2
         );
 
         // containersToRun should be a subset of containersToCreate, as only if the container is created can it be run.
@@ -49,7 +51,8 @@ public class DockerUtilityTest {
                 DockerImage.MYSQL_LATEST,
                 DockerImage.MONGODB_LATEST,
                 DockerImage.SPLUNK_LATEST,
-                DockerImage.POSTGRESQL_LATEST
+                DockerImage.POSTGRESQL_LATEST,
+                DockerImage.ELASTICSEARCH_7_9_2
         );
 
         dockerUtility = new DockerUtility();
@@ -71,7 +74,7 @@ public class DockerUtilityTest {
     }
 
     @Test
-    /*
+    /**
      * Test if the docker service is up and running.
      */
     public void testDockerServiceAvailability() {
@@ -82,7 +85,7 @@ public class DockerUtilityTest {
     }
 
     @Test
-    /*
+    /**
      * Tests if all required docker images are present.
      */
     public void testIfDockerImageIsPresent() {
@@ -101,7 +104,7 @@ public class DockerUtilityTest {
     }
 
     @Test
-    /*
+    /**
      * Test if all required docker containers are present.
      */
     public void testIfDockerContainerIsPresent() {
@@ -113,7 +116,7 @@ public class DockerUtilityTest {
     }
 
     @Test
-    /*
+    /**
      * Tests if only all desired containers are running.
      */
     public void testIfDockerContainerIsRunning() {
