@@ -40,39 +40,33 @@
             <artifactId>docker-java</artifactId>
             <version>3.2.5</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.13.2</version>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
             <version>5.5.1</version>
         </dependency>
-
         <!-- MS SQL Driver -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <version>8.4.1.jre11</version>
         </dependency>
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.19</version>
         </dependency>
-
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
             <version>3.4.1</version>
         </dependency>
-
         <dependency>
             <groupId>com.splunk</groupId>
             <artifactId>splunk</artifactId>
@@ -83,8 +77,10 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.18</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-client</artifactId>
+            <version>7.9.2</version>
+        </dependency>
     </dependencies>
-
 </project>
