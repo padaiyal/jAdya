@@ -45,6 +45,12 @@ public enum DockerImage {
             "latest",
             "8000:8000 8089:8089",
             "SPLUNK_START_ARGS=--accept-license;SPLUNK_PASSWORD=initialPassword12345!"
+    ),
+    POSTGRESQL_LATEST(
+            "postgres",
+            "latest",
+            "5432:5432",
+            "POSTGRES_PASSWORD=admin"
     );
 
     private final String repository;
