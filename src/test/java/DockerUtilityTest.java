@@ -28,7 +28,8 @@ public class DockerUtilityTest {
                 DockerImage.MICROSOFT_SQL_SERVER_2017_LATEST,
                 DockerImage.MYSQL_LATEST,
                 DockerImage.MONGODB_LATEST,
-                DockerImage.SPLUNK_LATEST
+                DockerImage.SPLUNK_LATEST,
+                DockerImage.POSTGRESQL_LATEST
         );
 
         createdContainers = new HashMap<>();
@@ -37,7 +38,8 @@ public class DockerUtilityTest {
                 DockerImage.MICROSOFT_SQL_SERVER_2019_LATEST,
                 DockerImage.MYSQL_LATEST,
                 DockerImage.MONGODB_LATEST,
-                DockerImage.SPLUNK_LATEST
+                DockerImage.SPLUNK_LATEST,
+                DockerImage.POSTGRESQL_LATEST
         );
 
         // containersToRun should be a subset of containersToCreate, as only if the container is created can it be run.
@@ -46,7 +48,8 @@ public class DockerUtilityTest {
                 DockerImage.MICROSOFT_SQL_SERVER_2019_LATEST,
                 DockerImage.MYSQL_LATEST,
                 DockerImage.MONGODB_LATEST,
-                DockerImage.SPLUNK_LATEST
+                DockerImage.SPLUNK_LATEST,
+                DockerImage.POSTGRESQL_LATEST
         );
 
         dockerUtility = new DockerUtility();
