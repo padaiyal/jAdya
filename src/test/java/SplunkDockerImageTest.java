@@ -1,23 +1,31 @@
 import com.splunk.Service;
 import com.splunk.ServiceArgs;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.Arrays;
+import java.util.Objects;
 
-public class SplunkDockerImageTest {
+public class SplunkDockerImageTest extends ADockerImageTest {
 
-    /**
-     * Connects to the specified Splunk server.
-     * @param dockerImage Docker image to retrieve all connection parameters from
-     */
-    private void connectToSplunk(DockerImage dockerImage) {
-        String password = Arrays.stream(dockerImage.getEnvironmentVariables())
-                .filter(environmentVariable -> environmentVariable.startsWith("SPLUNK_PASSWORD="))
-                .map(environmentVariable -> environmentVariable.substring(16))
-                .findFirst()
-                .orElse("");
+    @Override
+    public DockerImage[] getDockerImages() {
+        return new DockerImage[] {
+            DockerImage.SPLUNK_LATEST
+        };
+    }
+
+    @Override
+    public String getContainerName() {
+        return "splunk_container";
+    }
+
+    @Override
+    public long getStartupWaitTimeInMs() {
+        return 30_000;
+    }
+
+    @Override
+    public void testServiceInDockerContainer(DockerImage dockerImage) {
+        String password = dockerImage.getEnvironmentVariable("SPLUNK_PASSWORD");
+        Objects.requireNonNull(password);
 
         // Create a map of arguments and add login parameters
         ServiceArgs loginArgs = new ServiceArgs();
@@ -28,33 +36,7 @@ public class SplunkDockerImageTest {
 
         System.setProperty("https.protocols", "TLSv1,TLSv1.1,TLSv1.2");
 
-        // Create a Service instance and log in with the argument map
-        Service service = Service.connect(loginArgs);
-
-        System.out.println(service.getApplications());
-    }
-
-    @ParameterizedTest
-    @CsvSource(
-            {
-                    "SPLUNK_LATEST"
-            }
-    )
-    public void testSplunkDockerImage(DockerImage dockerImage) throws InterruptedException {
-        DockerUtility dockerUtility = new DockerUtility();
-        String containerName = "splunk_container";
-        try {
-            // Create and run container
-            dockerUtility.createAndRunContainer(dockerImage, containerName, true);
-
-            // Wait 30s for the Splunk server to start up
-            Thread.sleep(30_000);
-
-            // Test if the connection to the database is successful
-            Assertions.assertDoesNotThrow(() -> connectToSplunk(dockerImage));
-        } finally {
-            // Stop and remove container
-            dockerUtility.removeContainerIfExists(containerName);
-        }
+        // Create a Service instance by logging in with the argument map
+        Service.connect(loginArgs);
     }
 }

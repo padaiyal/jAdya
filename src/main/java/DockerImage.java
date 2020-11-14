@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public enum DockerImage {
@@ -105,6 +106,23 @@ public enum DockerImage {
     public String[] getEnvironmentVariables() {
         return this.environmentVariables;
     }
+
+    /**
+     * Returns the value of the specified environment variable if it is configured for this Docker image,
+     * else returns a null.
+     * @param name Name of the environment variable whose value is to be returned,
+     * @return The value of the environment variable, null if it isn't found.
+     */
+    public String getEnvironmentVariable(String name) {
+        Objects.requireNonNull(name);
+        String prefixToMatch = name + "=";
+        return Arrays.stream(environmentVariables)
+            .filter(environmentVariable -> environmentVariable.startsWith(prefixToMatch))
+            .map(environmentVariable -> environmentVariable.substring(prefixToMatch.length()))
+            .findFirst()
+            .orElse(null);
+    }
+
 
     @Override
     public String toString() {
