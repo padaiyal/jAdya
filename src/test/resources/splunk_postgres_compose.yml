@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: initialPassword12345!
+    ports:
+      - "5432:5432"
+  splunk:
+    image: splunk/splunk:latest
+    environment:
+      SPLUNK_START_ARGS: --accept-license
+      SPLUNK_PASSWORD: initialPassword12345!
+    ports:
+      - "8000:8000"
+      - "8089:8089"
