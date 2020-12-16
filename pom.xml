@@ -31,6 +31,14 @@
             <name>Splunk Releases</name>
             <url>https://splunk.jfrog.io/splunk/ext-releases-local</url>
         </repository>
+        <repository>
+            <id>jicing-mvn-repo</id>
+            <url>https://raw.github.com/padaiyal/jIcing/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -43,9 +51,7 @@
         <dependency>
             <groupId>org.java</groupId>
             <artifactId>icing</artifactId>
-            <version>2020.09.21</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/icing-2020.09.21.jar</systemPath>
+            <version>2020.11.19</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
         <dependency>
