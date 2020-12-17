@@ -25,6 +25,7 @@
         </pluginManagement>
     </build>
 
+
     <repositories>
         <repository>
             <id>splunk-artifactory</id>
@@ -33,7 +34,7 @@
         </repository>
         <repository>
             <id>jicing-mvn-repo</id>
-            <url>https://raw.github.com/padaiyal/jIcing/mvn-repo/</url>
+            <url>https://maven.pkg.github.com/padaiyal/jIcing</url>
             <snapshots>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
