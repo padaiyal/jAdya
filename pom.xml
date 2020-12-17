@@ -33,7 +33,7 @@
         </repository>
         <repository>
             <id>jicing-mvn-repo</id>
-            <url>https://raw.github.com/padaiyal/jIcing/packages</url>
+            <url>https://raw.github.com/padaiyal/jIcing/mvn-repo/</url>
             <snapshots>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
