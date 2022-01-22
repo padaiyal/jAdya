@@ -55,7 +55,7 @@ public class DockerComposeUtilityTest {
             "up, splunk_postgres_compose_lol.yml, -d, 5, false, FileNotFoundException",
 
             // Invalid additional arguments
-            "up, splunk_postgres_compose.yml, -dddd, 5, true, RuntimeException",
+            "up, splunk_postgres_compose.yml, -ddooodd, 5, true, RuntimeException",
             "down, splunk_postgres_compose.yml, -dddd, 5, true, RuntimeException"
         }
     )
@@ -102,6 +102,22 @@ public class DockerComposeUtilityTest {
                 finalComposeFilePath,
                 additionalArgs,
                 timeoutDuration
+            ),
+            String.format(
+                    "Running test testDockerComposeWithInvalidInputs(\n" +
+                            "\tcomposeCommand='%s', \n" +
+                            "\tcomposeFilePathString='%s', \n" +
+                            "\tadditionalArgs='%s', \n" +
+                            "\ttimeoutDurationInSeconds=%d, \n" +
+                            "\tresolveComposeFilePathAsAClassResource=%b, \n" +
+                            "\texpectedExceptionClassString=%s\n" +
+                            ")",
+                    composeCommand,
+                    composeFilePathString,
+                    additionalArgs,
+                    timeoutDurationInSeconds,
+                    resolveComposeFilePathAsAClassResource,
+                    expectedExceptionClassString
             )
         );
     }

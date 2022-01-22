@@ -3,17 +3,31 @@ import com.github.dockerjava.api.model.ExposedPort;
 import com.github.dockerjava.api.model.HostConfig;
 import com.github.dockerjava.api.model.Image;
 import com.github.dockerjava.api.model.Ports;
+import com.github.dockerjava.core.DefaultDockerClientConfig;
 import com.github.dockerjava.core.DockerClientBuilder;
+import com.github.dockerjava.core.DockerClientConfig;
+import com.github.dockerjava.httpclient5.ApacheDockerHttpClient;
+import com.github.dockerjava.transport.DockerHttpClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class DockerUtility {
-
+    private static DockerClientConfig defaultDockerClientConfig = DefaultDockerClientConfig.createDefaultConfigBuilder()
+            .build();
+    private static DockerHttpClient dockerHttpClient = new ApacheDockerHttpClient.Builder()
+            .dockerHost(defaultDockerClientConfig.getDockerHost())
+            .sslConfig(defaultDockerClientConfig.getSSLConfig())
+            .maxConnections(100)
+            .connectionTimeout(Duration.ofSeconds(30))
+            .responseTimeout(Duration.ofSeconds(45))
+            .build();
     private static final DockerClient dockerClient = DockerClientBuilder.getInstance()
+            .withDockerHttpClient(dockerHttpClient)
             .build();
     private static final Logger logger = LogManager.getLogger(DockerUtility.class);
 
